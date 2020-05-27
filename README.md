@@ -48,3 +48,7 @@ e.g.
 ```
 
 The above is going to call the EnhanceClearbitJob after the user signs up.
+
+## Troubleshooting
+* Remember that you must have `redis` and `sidekiq` running. If not, run `sudo service redis-server start` and `sidekiq`.
+* If you have issues, running `redis-cli FLUSHALL` might to the charm.
