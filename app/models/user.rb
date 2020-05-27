@@ -4,11 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  after_create :enhance_clearbit
+  # after_create :enhance_clearbit
 
-  private
+  # private
 
-  def enhance_clearbit
-    EnhanceClearbitJob.perform_later(self.id)
-  end
+  # def enhance_clearbit
+  #   EnhanceClearbitJob.perform_later(self.id)
+  # end
 end

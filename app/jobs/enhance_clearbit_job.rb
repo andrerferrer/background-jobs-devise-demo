@@ -5,7 +5,6 @@ class EnhanceClearbitJob < ApplicationJob
 
   def perform(user_id)
     user = User.find(user_id)
-
     # access clearbit
     Clearbit.key = ENV['CLEARBIT_API_KEY']
     response = Clearbit::Enrichment.find(email: user.email)
