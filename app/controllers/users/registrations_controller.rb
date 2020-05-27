@@ -10,9 +10,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do |resource|
+      enhance_with_clearbit(resource)
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -59,4 +61,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def enhance_with_clearbit(user)
+    EnhanceClearbitJob.perform_later(user.id)
+  end
 end
